@@ -1,0 +1,18 @@
+version: '3'
+services:
+  server:
+    image: backend-docker
+    ports:
+      - 8080:8080
+
+  client:
+    image: frontend-docker
+    environment:
+      SERVER_HOST: server
+      SERVER_PORT: 8080
+
+  rebbitmq:
+    image: rabbitmq:3.9-management-alpine
+    ports:
+      - 5673:5672
+      - 15673:15672
